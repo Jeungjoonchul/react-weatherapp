@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import './App.css';
+import APIKey from'./APIKey';
 
 function App() {
   const [temp, setTemp] = useState('');
   const [desc, setDesc] = useState('');
   const [icon, setIcon] = useState('');
   const [isReady, setReady] = useState('');
-
+  const apikey = APIKey;
   React.useEffect(()=>{
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=Hanam&units=metric&appid=3c324820a02abe0101e1dfac82a9424f')
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=Hanam&units=metric&appid=${apikey}`)
     .then(result => result.json())
     .then(jsonresult => {
       setTemp(jsonresult.main.temp);
